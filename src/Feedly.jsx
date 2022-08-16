@@ -15,6 +15,31 @@ function App() {
   const [continuation, setContinuation] = useState("9999999999999")
   const [category, setCategory] = useState("c59b3cef-0fa1-414c-8aca-dc9678aaa85f")  //hbfav
 
+  // 一番下に到達したらpageを更新 -> handleClickが実行される
+  const handleScroll = lodash.throttle(() => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop !==
+      document.documentElement.offsetHeight
+    ) {
+      return;
+    }
+
+    // 一番下に到達した時の処理
+    //if(message !== "loading...") {
+      setPage((prevCount) => prevCount + 1);
+      console.log('page count + 1');
+    //}
+
+  }, 500);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
   // pageが変化した時に実行
   useEffect(() => {
     //document.title = `page = ${page}, message = ${message}`;
