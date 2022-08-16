@@ -111,8 +111,6 @@ function App() {
     <div className="App">
       <header className="QiitaApp-header">
         <Search search={handleClick} />
-        <button onClick={() => {OnButtonClick()}}>On</button>
-        page:{page}
         <ul>{renderImageList(postsList)}</ul>
       </header>
       <button onClick={() => {NextButtonClick()}}>Next</button>
