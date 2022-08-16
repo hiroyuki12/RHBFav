@@ -4,6 +4,16 @@
   box-sizing: border-box;
 }
 
+.QiitaApp-footer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  height: 60px;
+  background-color: #282c44;
+  text-align: center;
+  color: white;
+}
+
 .QiitaApp-header {
   background-color: #282c34;
   color: orange;

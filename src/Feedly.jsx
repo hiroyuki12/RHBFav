@@ -3,9 +3,10 @@ import reactLogo from './assets/react.svg'
 //import './App.css'
 import './FeedlyApp.css'
 import Search from './Search'
-import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
-dayjs.extend(relativeTime);
+import lodash from 'lodash'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+dayjs.extend(relativeTime)
 
 function App() {
   const [postsList, setPostsList] = useState([])
@@ -13,14 +14,24 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [continuation, setContinuation] = useState("9999999999999")
   const [category, setCategory] = useState("c59b3cef-0fa1-414c-8aca-dc9678aaa85f")  //hbfav
-  const [categoryName, setCategoryName] = useState("hbfav")
 
-  const categoryButtonClick = () => {
+  // pageが変化した時に実行
+  useEffect(() => {
+    //document.title = `page = ${page}, message = ${message}`;
+    handleClick();
+    //console.log('handleClick (useEffect)');
+    // eslint-disable-next-line
+  }, [page]); // Only re-run the effect if count changes
+
+  const OnButtonClick = () => {
     setPostsList([]);
     setContinuation("9999999999999");
-      setCategory("c59b3cef-0fa1-414c-8aca-dc9678aaa85f");
-      setCategoryName("hbfav");
+    setCategory("c59b3cef-0fa1-414c-8aca-dc9678aaa85f");
     handleClick();
+  }
+
+  const NextButtonClick = () => {
+    setPage((prevCount) => prevCount + 1);
   }
 
   const handleClick = () => {
@@ -50,9 +61,7 @@ function App() {
   const renderImageList = (list) => {
     const posts = list.map((item, index) => {
       var imgsrc = ""
-      if(categoryName === "hbfav") {
-        imgsrc = "https://cdn.profile-image.st-hatena.com/users/" + item.author + "/profile.gif"
-      }
+      imgsrc = "https://cdn.profile-image.st-hatena.com/users/" + item.author + "/profile.gif"
       const date = new Date(item.published)
       return (
         <li className="item" key={index}>
@@ -77,9 +86,11 @@ function App() {
     <div className="App">
       <header className="QiitaApp-header">
         <Search search={handleClick} />
-        <button onClick={() => {categoryButtonClick()}}>On</button>
+        <button onClick={() => {OnButtonClick()}}>On</button>
+        page:{page}
         <ul>{renderImageList(postsList)}</ul>
       </header>
+      <button onClick={() => {NextButtonClick()}}>Next</button>
     </div>
   )
 }
