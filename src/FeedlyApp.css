@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.QiitaApp-header {
+  background-color: #282c34;
+  color: orange;
+}
+
+.QiitaApp-link {
+  color: white;
+}
+
+.card-container{
+  display: flex;
+  height: 38px;
+}
+
+.card-text a{
+  color: white;
+  font-size: 14px;
+  line-height: 1.2em;
+  height: 28px;
+  margin: 4px;
+
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.card-text2{
+  font-size: 11px;
+  margin: 4px;
+  height: 15px;
+
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
