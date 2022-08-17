@@ -111,6 +111,7 @@ function App() {
     <div className="App">
       <header className="QiitaApp-header">
         <Search search={handleClick} />
+        {dayjs('2022-08-17 10:00').fromNow(true)}
         <ul>{renderImageList(postsList)}</ul>
       </header>
       <button onClick={() => {NextButtonClick()}}>Next</button>
