@@ -91,7 +91,7 @@ function App() {
       return (
         <li className="item" key={index}>
           <div class="card-container">
-            <img src={imgsrc} width="50" height="50" loading="lazy" alt="img"/>
+            <img src={imgsrc} width="56" height="56" loading="lazy" alt="img"/>
 
             <div class="card-text">
               <a className="QiitaApp-link" href={item.alternate[0].href} target="_blank" rel="noreferrer">{item.title}</a>
